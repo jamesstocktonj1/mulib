@@ -1,2 +1,3 @@
 http = "https://github.com/WebAssembly/wasi-http/archive/v0.2.0.tar.gz"
 component = "https://github.com/wasmCloud/component-sdk-go/archive/main.tar.gz"
+keyvalue = "https://github.com/WebAssembly/wasi-keyvalue/archive/main.tar.gz"
