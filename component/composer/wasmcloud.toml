@@ -1,0 +1,12 @@
+name = "CreateComposer"
+language = "other"
+type = "component"
+version = "0.1.0"
+path = "."
+
+[component]
+build_command = "tinygo build -target=wasip2 --wit-package ./wit --wit-world function -o build/composer_s.wasm"
+build_artifact = "build/composer_s.wasm"
+wit_world = "function"
+wasm_target = "wasm32-wasi-preview2"
+destination = "build/composer_s.wasm"
