@@ -34,6 +34,8 @@ jobs:
         uses: acifani/setup-tinygo@v2
         with:
           tinygo-version: '0.33.0'
+      - name: Setup wasm-tools
+        run: cargo install wasm-tools
       - name: Build Component
         run: wash build -p component/${{ matrix.component }}
       - name: Publish Component
