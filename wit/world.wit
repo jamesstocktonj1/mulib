@@ -1,0 +1,5 @@
+package wasmcloud:document@0.1.0-draft;
+
+world imports {
+    import document;
+}

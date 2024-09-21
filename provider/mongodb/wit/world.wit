@@ -1,0 +1,6 @@
+package mulib:mongodb-provider;
+
+world provider {
+    export wasmcloud:document/document@0.1.0-draft;
+    // export wrpc:keyvalue/store@0.2.0-draft;
+}

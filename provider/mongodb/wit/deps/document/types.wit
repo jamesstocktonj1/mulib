@@ -1,0 +1,12 @@
+interface types {
+
+    type collection = list<u8>;
+    
+    record document {
+        data: list<u8>,
+    }
+
+    record filter {
+        data: list<u8>,
+    }
+}

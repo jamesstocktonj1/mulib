@@ -1,0 +1,26 @@
+interface document {
+    use types.{
+        collection, document, filter
+    };
+
+    insert: func(
+        col: collection,
+        doc: document,
+    ) -> result<_, string>;
+
+    find: func(
+        col: collection,
+        filter: filter,
+    ) -> result<list<document>, string>;
+
+    update: func(
+        col: collection,
+        doc: document,
+        filter: filter,
+    ) -> result<_, string>;
+    
+    delete: func(
+        col: collection,
+        filter: filter,
+    ) -> result<_, string>;
+}
