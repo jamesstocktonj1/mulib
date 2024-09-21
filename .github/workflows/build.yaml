@@ -1,0 +1,39 @@
+name: Component Build
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - main
+    paths:
+      - component/**/*
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-components:
+    name: Build Components
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        component:
+          - composer
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      - name: Setup wash-cli
+        uses: wasmCloud/common-actions/install-wash@main
+      - name: Build Component
+        run: wash build -p component/${{ matrix.component }}
+      - name: Publish Component
+        env:
+          WASH_REG_USER: ${{ github.actor }}
+          WASH_REG_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        run: wash push ghcr.io/${{ github.repository }}/component-${{ matrix.component }}:${{ steps.meta.outputs.tags || 'main' }} component/${{ matrix.component }}/build/${{ matrix.component }}_s.wasm
