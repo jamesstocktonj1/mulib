@@ -35,7 +35,9 @@ jobs:
         with:
           tinygo-version: '0.33.0'
       - name: Setup wasm-tools
-        run: cargo install wasm-tools
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: wasm-tools
       - name: Build Component
         run: |
           mkdir component/${{ matrix.component }}/build
