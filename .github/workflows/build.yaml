@@ -30,6 +30,10 @@ jobs:
       - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
       - name: Setup wash-cli
         uses: wasmCloud/common-actions/install-wash@main
+      - name: Setup TinyGo
+        uses: acifani/setup-tinygo@v2
+        with:
+          tinygo-version: '0.33.0'
       - name: Build Component
         run: wash build -p component/${{ matrix.component }}
       - name: Publish Component
