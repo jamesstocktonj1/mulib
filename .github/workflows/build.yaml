@@ -37,7 +37,9 @@ jobs:
       - name: Setup wasm-tools
         run: cargo install wasm-tools
       - name: Build Component
-        run: wash build -p component/${{ matrix.component }}
+        run: |
+          mkdir component/${{ matrix.component }}/build
+          wash build -p component/${{ matrix.component }}
       - name: Publish Component
         env:
           WASH_REG_USER: ${{ github.actor }}
